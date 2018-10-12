@@ -21,10 +21,16 @@ require_once("config.php");
 //$usuario->login("root","654321");
 //echo $usuario;
 
-$aluno = new Usuario("Adernando","88888");
+//criando um novo usuario
+//$aluno = new Usuario("Adernando","88888");
 //$aluno->setDeslogin("aluno2");
 //$aluno->setDessenha("565465");
-$aluno->insert();
+//$aluno->insert();
+//echo $aluno;
 
-echo $aluno;
+// atualizando um registro
+$usuario = new Usuario();
+$usuario->loadById(7);
+$usuario->update("Aline Barros","@#@$#$@");
+echo $usuario
  ?>

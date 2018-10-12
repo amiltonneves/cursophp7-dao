@@ -91,7 +91,21 @@ class Usuario{
             $this->setData($results[0]);
         }
     }
+    public function update($login, $password){
+        
+        $this->setDeslogin($login);
+        $this->setDessenha($password);
 
+        $sql = new Sql();
+        $results = $sql->select("update tb_usuario set deslogin = :LOGIN, dessenha = :PASSWORD where idusuario = :ID",array(
+            ":LOGIN"=>$this->getDeslogin(),
+            ":PASSWORD"=>$this->getDessenha(),
+            ":ID"=>$this->getIdusuario()
+        ));
+        if (count($results) > 0) {
+            $this->setData($results[0]);
+        }
+    }
     public function __construct($login="", $password=""){
         $this->setDeslogin($login);
         $this->setDessenha($password);
