@@ -29,8 +29,14 @@ require_once("config.php");
 //echo $aluno;
 
 // atualizando um registro
+//$usuario = new Usuario();
+//$usuario->loadById(7);
+//$usuario->update("Aline Barros","@#@$#$@");
+//echo $usuario
+
+// excluindo registro
 $usuario = new Usuario();
-$usuario->loadById(7);
-$usuario->update("Aline Barros","@#@$#$@");
-echo $usuario
+$usuario->loadById(8);
+$usuario->delete();
+echo $usuario;
  ?>

@@ -92,12 +92,12 @@ class Usuario{
         }
     }
     public function update($login, $password){
-        
+
         $this->setDeslogin($login);
         $this->setDessenha($password);
 
         $sql = new Sql();
-        $results = $sql->select("update tb_usuario set deslogin = :LOGIN, dessenha = :PASSWORD where idusuario = :ID",array(
+        $results = $sql->query("update tb_usuario set deslogin = :LOGIN, dessenha = :PASSWORD where idusuario = :ID",array(
             ":LOGIN"=>$this->getDeslogin(),
             ":PASSWORD"=>$this->getDessenha(),
             ":ID"=>$this->getIdusuario()
@@ -105,6 +105,16 @@ class Usuario{
         if (count($results) > 0) {
             $this->setData($results[0]);
         }
+    }
+    public function delete(){
+        $sql = new Sql();
+        $results = $sql->query("delete from tb_usuario where idusuario = :ID",array(
+            ":ID"=>$this->getIdusuario()
+        ));
+        $this->setIdusuario(0);
+        $this->setDeslogin("");
+        $this->setDessenha("");
+        $this->setDtcadastro(new DateTime());
     }
     public function __construct($login="", $password=""){
         $this->setDeslogin($login);
